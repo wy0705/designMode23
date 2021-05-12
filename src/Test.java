@@ -1,6 +1,12 @@
+import IFlyweight.FlyweightFactory;
+import IFlyweight.IFlyweight;
 import adapter.classadapter.AdapterUSB2VGA;
 import adapter.classadapter.Projector;
 import adapter.classadapter.VGA;
+import appearance.Computer;
+import bridge.Camera;
+import bridge.Software;
+import bridge.Vivo;
 import builder.DELLComputerBuilder;
 import builder.Diretor;
 import factory_1.Pizza;
@@ -36,7 +42,7 @@ public class Test {
 //        Projector p1=new Projector();
 //        p1.projection(a);
 
-        //修饰者模式
+        /*//修饰者模式
         Drink order;
         order = new Decaf();
         System.out.println("order1 price:" + order.cost());
@@ -47,7 +53,30 @@ public class Test {
         order = new Chocolate(order);
         order = new Chocolate(order);
         System.out.println("order2 price:" + order.cost());
-        System.out.println("order2 desc:" + order.getDescription());
+        System.out.println("order2 desc:" + order.getDescription());*/
+
+//        //外观模式
+//        Computer computer = new Computer();
+//        computer.start();
+//        System.out.println("=================");
+//        computer.shutDown();
+
+        /*//桥接模式
+        Vivo vivo=new Vivo();
+        vivo.setSoftware(new Camera());
+        vivo.run();*/
+
+        //享元模式
+        FlyweightFactory flyweightFactory = new FlyweightFactory();
+        IFlyweight flyweight1 = flyweightFactory.getFlyweight("A");
+        IFlyweight flyweight2 = flyweightFactory.getFlyweight("B");
+        IFlyweight flyweight3 = flyweightFactory.getFlyweight("A");
+        ((IFlyweight) flyweight1).print();
+        flyweight2.print();
+        flyweight3.print();
+        System.out.println(flyweightFactory.getFlyweightMapSize());
+
+
 
     }
 }
