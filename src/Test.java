@@ -13,7 +13,17 @@ import factory_1.Pizza;
 import factory_1.SimplePizzaFactory;
 import factory_2.NYOrderPizza;
 import factory_2.OrderPizza;
+import observer.Observer;
+import observer.User;
+import observer.WechatServer;
 import ornamenter.*;
+import responsibilityChain.*;
+import strategy.AddStrategy;
+import strategy.Environment;
+import strategy.SubstractStrategy;
+import template.Bouilli;
+import template.Dish;
+import template.EggWithTomato;
 
 public class Test {
     public static void main(String[] args) {
@@ -66,7 +76,7 @@ public class Test {
         vivo.setSoftware(new Camera());
         vivo.run();*/
 
-        //享元模式
+        /*//享元模式
         FlyweightFactory flyweightFactory = new FlyweightFactory();
         IFlyweight flyweight1 = flyweightFactory.getFlyweight("A");
         IFlyweight flyweight2 = flyweightFactory.getFlyweight("B");
@@ -75,8 +85,59 @@ public class Test {
         flyweight2.print();
         flyweight3.print();
         System.out.println(flyweightFactory.getFlyweightMapSize());
+*/
+
+        /*//策略模式
+        Environment environment=new Environment(new AddStrategy());
+        int result=environment.calculate(20,5);
+        System.out.println(result);
+
+        Environment environment1=new Environment(new SubstractStrategy());
+        int result1=environment1.calculate(20,5);
+        System.out.println(result1);
+*/
+
+        /*//模板模式
+        Dish eggsWithTomato = new EggWithTomato();
+        eggsWithTomato.dodish();
+
+        System.out.println("-----------------------------");
+
+        Dish bouilli = new Bouilli();
+        bouilli.dodish();
 
 
+*/
+        /*//观察者模式
+        WechatServer server = new WechatServer();
+
+        Observer userZhang = new User("ZhangSan");
+        Observer userLi = new User("LiSi");
+        Observer userWang = new User("WangWu");
+
+        server.registerObserver(userZhang);
+        server.registerObserver(userLi);
+        server.registerObserver(userWang);
+        server.setInfomation("PHP是世界上最好用的语言！");
+
+        System.out.println("----------------------------------------------");
+        server.removeObserver(userZhang);
+        server.setInfomation("JAVA是世界上最好用的语言！");*/
+
+       /* //责任连模式
+        Client mClient = new Client();
+        Approver GroupLeader = new GroupApprover("Tom");
+        Approver DepartmentLeader = new DepartmentApprover("Jerry");
+        Approver VicePresident = new VicePresidentApprover("Kate");
+        Approver President = new PresidentApprover("Bush");
+
+        GroupLeader.SetSuccessor(VicePresident);
+        DepartmentLeader.SetSuccessor(President);
+        VicePresident.SetSuccessor(DepartmentLeader);
+        President.SetSuccessor(GroupLeader);
+
+        GroupLeader.ProcessRequest(mClient.sendRequst(1, 10000, 40));
+*/
 
     }
 }

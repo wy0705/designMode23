@@ -1,0 +1,6 @@
+package order;
+
+public interface Command {
+    public void excute();
+    public void undo();
+}
